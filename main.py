@@ -17,6 +17,9 @@ playergreenimg = pygame.image.load('img/playergreen.png')
 playerredimg = pygame.image.load('img/playerred.png')
 coin10expimg = pygame.image.load('img/coin10exp.png')
 
+#fonts
+bullpen_font = pygame.font.Font('fonts/bullpen-3d/Bullpen3D.ttf', 28)
+
 #position variables
 movingleft = False
 movingright = False
@@ -30,12 +33,17 @@ playerrect = pygame.Rect(playerposition[0], playerposition[1], playerblueimg.get
 coin10exprect = pygame.Rect(coin10exppos[0], coin10exppos[1], coin10expimg.get_width(), coin10expimg.get_height())
 
 #other variables
+score_num = 0
 
 #game update and loop
 while True:
+    #text
+    score = bullpen_font.render("Score: " + str(score_num), True, (0, 0, 0))
+    
     screen.fill((50, 168, 82))
     screen.blit(playerblueimg, playerposition)
     screen.blit(coin10expimg, coin10exppos)
+    screen.blit(score, (40, 40))
     if movingleft == True:
         playerposition[0] -= 1
     if movingright == True:
@@ -54,6 +62,8 @@ while True:
         coin10exprect.x = coin10exppos[0]
         coin10exprect.y = coin10exppos[1]
         coin10exppos = [random.randint(100, 700), random.randint(100, 500)]
+        score_num = score_num + 1
+        screen.blit(score, (40, 40))
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -80,4 +90,4 @@ while True:
                 movingdown = False
 
     pygame.display.update()
-    clock.tick(160)
+    clock.tick(120)
