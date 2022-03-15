@@ -9,7 +9,7 @@ w_size = (800, 600)
 pygame.init()
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode(w_size)
-pygame.display.set_caption('PlatGame(60 FPS(framerate/framepersecond))')
+pygame.display.set_caption('PlatGame(120 FPS(framerate/framepersecond))')
 
 #images
 playerblueimg = pygame.image.load('img/playerblue.png')
